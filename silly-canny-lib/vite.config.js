@@ -1,23 +1,25 @@
-import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
-import { defineConfig } from "vite";
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import { defineConfig } from 'vite'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  build: {
-    lib: {
-      entry: resolve(__dirname, "src/index.js"),
-      name: "SillyCannyLib",
-      fileName: "silly-canny-lib",
-    },
-    rollupOptions: {
-      external: ["vue"],
-      output: {
-        globals: {
-          vue: "Vue",
-        },
-      },
-    },
-  },
+export default defineConfig(({ command }) => ({
   plugins: [vue()],
-});
+  build:
+    command === 'build'
+      ? {
+          lib: {
+            entry: path.resolve(__dirname, 'src/lib.js'),
+            name: 'SillyCannyLib',
+            fileName: (format) => `silly-canny-lib.${format}.js`,
+          },
+          rollupOptions: {
+            external: ['vue'],
+            output: {
+              globals: {
+                vue: 'Vue',
+              },
+            },
+          },
+        }
+      : {},
+}))
