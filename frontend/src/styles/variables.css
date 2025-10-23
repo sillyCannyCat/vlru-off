@@ -1,0 +1,23 @@
+:root {
+  /* Font family */
+  --font-family-sans: 'SF Pro', system-ui, sans-serif;
+
+  /* Accent */
+  --color-accent-orange: #f97d41;
+  --color-accent-blue: #4197f9;
+  --color-accent-purple: #8441f9;
+
+  /* Text */
+  --color-text-primary: #000000;
+  --color-text-secondary: #333333;
+  --color-text-muted: #e4e4e7;
+
+  /* Status */
+  --color-status-success: #31d158;
+  --color-status-destructive: #e53935;
+
+  /* Background */
+  --color-background: #f9f9f9;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f4f5;
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="p-8">
-    <Button>Тестовая кнопка</Button>
+    <Button>Cancel</Button>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <button
-    class="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
+    class="px-4 py-2 rounded-md text-body-medium text-white bg-[var(--color-accent-orange)] hover:bg-orange-600 transition"
   >
     <slot />
   </button>
