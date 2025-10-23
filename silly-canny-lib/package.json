@@ -1,0 +1,26 @@
+{
+  "name": "silly-canny-lib",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/silly-canny-lib.cjs",
+  "module": "./dist/silly-canny-lib.js",
+  "exports": {
+    ".": {
+      "import": "./dist/silly-canny-lib.js",
+      "require": "./dist/silly-canny-lib.umd.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.3.1"
+  }
+}
