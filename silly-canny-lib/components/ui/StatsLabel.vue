@@ -34,7 +34,7 @@ const labelClasses = computed(() => {
 </script>
 
 <template>
-  <component :class="labelClasses">
+  <div :class="labelClasses">
     {{ displayValue }}
-  </component>
+  </div>
 </template>

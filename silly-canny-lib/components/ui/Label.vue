@@ -23,5 +23,5 @@ const labelClasses = computed(() => {
 </script>
 
 <template>
-  <component :class="labelClasses"><slot /></component>
+  <div :class="labelClasses"><slot /></div>
 </template>
