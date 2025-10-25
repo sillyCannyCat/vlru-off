@@ -17,15 +17,15 @@ defineEmits(['click'])
 
 const buttonClasses = computed(() => {
   const baseClasses =
-    'text-body-medium rounded-[6px] px-[16px] py-[8px] inline-flex justify-center items-center gap-[8px]'
+    'text-button-adaptive rounded-[6px] py-[8px] inline-flex justify-center items-center gap-[8px] cursor-pointer transition'
   if (props.variant === 'default') {
-    return `${baseClasses} bg-[var(--color-text-primary)] text-white hover:bg-[var(--color-text-secondary)]`
+    return `${baseClasses} px-[16px] bg-[var(--color-text-primary)] text-white hover:bg-[var(--color-text-secondary)]`
   }
   if (props.variant === 'outline') {
-    return `${baseClasses} border-[1px] border-[var(--color-text-muted)] text-[var(--color-text-primary)] hover:bg-[color-mix(in srgb, var(--color-accent-orange), white 90%)]`
+    return `${baseClasses} px-[16px] border-[1px] border-[var(--color-text-muted)] text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)]`
   }
   if (props.variant === 'link') {
-    return `${baseClasses} underline underline-offset-2 text-[var(--color-accent-orange)] hover:text-[color-mix(in srgb, var(--color-accent-orange), black 20%)]`
+    return `${baseClasses} underline text-[var(--color-text-primary)]`
   }
 
   return baseClasses
