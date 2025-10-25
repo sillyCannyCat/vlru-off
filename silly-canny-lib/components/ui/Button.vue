@@ -20,11 +20,9 @@ const buttonClasses = computed(() => {
     'text-button-adaptive rounded-[6px] py-[8px] inline-flex justify-center items-center gap-[8px] cursor-pointer transition'
   if (props.variant === 'default') {
     return `${baseClasses} px-[16px] bg-[var(--color-text-primary)] text-white hover:bg-[var(--color-text-secondary)]`
-  }
-  if (props.variant === 'outline') {
+  } else if (props.variant === 'outline') {
     return `${baseClasses} px-[16px] border-[1px] border-[var(--color-text-muted)] text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)]`
-  }
-  if (props.variant === 'link') {
+  } else if (props.variant === 'link') {
     return `${baseClasses} underline text-[var(--color-text-primary)]`
   }
 
