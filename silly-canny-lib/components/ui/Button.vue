@@ -11,6 +11,10 @@ const props = defineProps({
     type: String,
     default: 'button',
   },
+  suffixIcon: {
+    type: String,
+    default: '',
+  },
 })
 
 defineEmits(['click'])
@@ -33,5 +37,6 @@ const buttonClasses = computed(() => {
 <template>
   <component :is="as" :class="buttonClasses" @click="$emit('click', $event)">
     <slot />
+    <img v-if="suffixIcon" :src="props.suffixIcon" class="w-[16px] h-[16px]" />
   </component>
 </template>
