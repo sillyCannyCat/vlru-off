@@ -24,7 +24,7 @@ const activeTab = computed({
   <div class="inline-flex flex-col">
     <!-- Tab Headers -->
     <div
-      class="flex p-[4px] rounded-[10px] bg-[var(--color-background-secondary)]"
+      class="flex p-[4px] rounded-[10px] outline-1 outline-offset-[-1px] outline-[var(--color-text-muted)] bg-[var(--color-background-secondary)]"
     >
       <button
         v-for="tab in tabs"
