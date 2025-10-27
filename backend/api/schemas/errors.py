@@ -1,4 +1,7 @@
 from ninja import Schema
+from typing import Optional
 
 class ErrorSchema(Schema):
-    detail: str
+    message: str
+    code: Optional[int] = None
+    details: Optional[dict] = None
