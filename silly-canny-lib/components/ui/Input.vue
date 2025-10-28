@@ -1,4 +1,3 @@
-<!-- src/components/Input.vue -->
 <script setup>
 import { computed } from 'vue'
 

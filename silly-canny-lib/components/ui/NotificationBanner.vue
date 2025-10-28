@@ -39,7 +39,7 @@ const bannerContentClasses = computed(() => {
             {{
               variant === 'counters'
                 ? 'Не забудьте про счётчики!'
-                : 'Не пропустите отключения!'
+                : 'Подключай уведомления'
             }}
           </slot>
         </div>
@@ -48,7 +48,7 @@ const bannerContentClasses = computed(() => {
             {{
               variant === 'counters'
                 ? 'Отправьте показания сейчас'
-                : 'Подключите уведомления в Telegram'
+                : 'И узнавай об отключениях сразу'
             }}
           </slot>
         </div>
