@@ -58,7 +58,7 @@ def get_blackouts(request):
             folk_district_name = building.folk_district_id.folk_district_name if building.folk_district_id else None
             lat, lon = building.get_coordinates()
             buildings.append({
-                'building_id': str(building.building_id),
+                'building_id': str(building.building_id), 
                 'street_name': street_name,
                 'number': building.number,
                 'district_name': district_name,
