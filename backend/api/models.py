@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import length
 from django_ulidfield import ULIDField
+from datetime import timedelta
+from django.utils import timezone
 
 class Initiator(models.Model):
     initiator_id = models.IntegerField(primary_key=True)
@@ -60,3 +62,12 @@ class BlackoutsBuilding(models.Model):
     blackout_id = models.ForeignKey(Blackout, on_delete=models.CASCADE)
     building_id = models.ForeignKey(Building, on_delete=models.CASCADE)
 
+class Complaint(models.Model):
+    complaint_id = models.AutoField(primary_key=True)
+    description = models.TextField(blank=True, null=True)
+    type = models.CharField(max_length=10)  # HW, CW, EL
+    created_at = models.DateTimeField(default=timezone.now)
+    building_id = models.ForeignKey(Building, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.type} - {self.created_at}"

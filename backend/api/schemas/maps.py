@@ -1,6 +1,21 @@
-from ninja import Schema, Field
+from ninja import Schema
 from typing import List, Optional
 from datetime import datetime
+
+class AddressSuggestion(Schema):
+    type: str
+    name: Optional[str] = None
+    street: Optional[str] = None
+    full_address: Optional[str] = None
+
+class TodayStatsOut(Schema):
+    date: str
+    today_count: int
+    yesterday_count: int
+    planned_count: int
+    difference: int
+    difference_percent: int
+    trend: str
 
 class BuildingOut(Schema):
     building_id: str
@@ -14,12 +29,24 @@ class BuildingOut(Schema):
 class BlackoutOut(Schema):
     blackout_id: str
     start_date: datetime
-    end_date: Optional[datetime] = Field(None, alias='end_data')
+    end_date: Optional[datetime] = None
     description: Optional[str]
     type: str
     initiator_name: Optional[str]
     source_name: Optional[str]
     buildings: List[BuildingOut]
 
-class AddressIn(Schema):
-    address: str
+class ComplaintSummaryOut(Schema):
+    report_date: str
+    summary: str
+    complaint_count: int
+    created_at: str
+
+class ComplaintGraphItem(Schema):
+    time: str
+    cold_water: int
+    hot_water: int
+    electricity: int
+
+class ComplaintGraphOut(Schema):
+    data: List[ComplaintGraphItem]
