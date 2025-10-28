@@ -23,6 +23,7 @@
 
   <Tabs v-model="activeTab" :tabs="tabList" />
   <div v-if="activeTab == 'tab1'">SOSAL</div>
+  <NotificationBanner variant="notifications" />
 </template>
 
 <script setup>
@@ -38,6 +39,7 @@ const tabList = [
 import Button from '../components/ui/Button.vue'
 import Input from '../components/ui/Input.vue'
 import Label from '../components/ui/Label.vue'
+import NotificationBanner from '../components/ui/NotificationBanner.vue'
 import StatsLabel from '../components/ui/StatsLabel.vue'
 import Tabs from '../components/ui/Tabs.vue'
 </script>
