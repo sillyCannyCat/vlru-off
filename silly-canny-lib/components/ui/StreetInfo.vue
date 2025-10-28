@@ -1,24 +1,46 @@
 <script setup>
 import '@/styles/typography.css'
+import Button from '@/components/ui/Button.vue'
+import Label from '@/components/ui/Label.vue'
 
-defineProps({
+
+const props = defineProps({
   address: {
     type: String,
-    default: 'Прикольная ул. 52'
+    default: 'Прикольная ул. 52',
+    required: false
   },
   issue: {
     type: String,
-    default: 'Нет горячей воды'
+    default: 'Нет горячей воды',
+    required: false
   },
   until: {
     type: String,
-    default: '12:00'
+    default: '12:00',
+    required: false
+  },
+
+  editText: {
+    type: String,
+    default: 'Изменить'
+  },
+  actionText: {
+    type: String,
+    default: 'Подробнее'
   }
+})
+
+const emit = defineEmits({
+  'detail-click': (event) => true,
+
+  'edit-click': (event) => true
 })
 </script>
 
 <template>
   <div class="w-80 p-2 bg-white rounded-md outline outline-1 outline-offset-[-1px] outline-zinc-200 inline-flex flex-col justify-start items-center gap-2 overflow-hidden">
+    
     <div class="self-stretch inline-flex justify-between items-center">
       <div class="flex justify-start items-center gap-1">
         <div class="w-5 h-5 flex items-center justify-center">
@@ -27,35 +49,37 @@ defineProps({
             class="w-4 h-4 object-contain"
           />
         </div>
+
         <div class="text-body-regular text-black">
-          <slot name="address">{{ address }}</slot>
+          <slot name="address">{{ props.address }}</slot>
         </div>
       </div>
 
-      <div class="px-2 py-1 bg-white rounded-md outline outline-1 outline-offset-[-1px] outline-zinc-200 flex justify-center items-center gap-2.5 cursor-pointer hover:bg-zinc-50 transition">
-        <div class="text-small-regular text-black">
-          <slot name="edit">Изменить</slot>
-        </div>
-      </div>
+      <button
+        @click="emit('edit-click', $event)"
+        class="text-small-regular text-[var(--color-text-primary)] underline cursor-pointer hover:opacity-70 transition"
+      >
+        <slot name="edit">{{ props.editText }}</slot>
+      </button>
     </div>
 
     <div class="inline-flex justify-start items-center gap-1">
       <div class="text-body-regular text-black font-normal">
-        <slot name="issue">{{ issue }}</slot>
+        <slot name="issue">{{ props.issue }}</slot>
       </div>
-      <div class="px-2 py-0.5 bg-zinc-100 rounded-md flex justify-center items-center gap-2.5">
-        <div class="text-small-regular text-black">
-          до <slot name="until">{{ until }}</slot>
-        </div>
-      </div>
+
+      <Label variant="ghost">
+        до <slot name="until">{{ props.until }}</slot>
+      </Label>
     </div>
 
-    <div class="self-stretch inline-flex justify-start items-start gap-2">
-      <button class="flex-1 px-4 py-2 bg-black rounded-md flex justify-center items-center gap-2.5 hover:bg-zinc-800 transition">
-        <div class="text-small-medium text-white">
-          <slot name="action">Подробнее</slot>
-        </div>
-      </button>
+    <div class="self-stretch">
+      <Button
+        @click="emit('detail-click', $event)"
+        class="w-full"
+      >
+        <slot name="action">{{ props.actionText }}</slot>
+      </Button>
     </div>
   </div>
 </template>
