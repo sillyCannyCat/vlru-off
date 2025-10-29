@@ -5,7 +5,7 @@ from api.schemas.errors import ErrorSchema
 from django.db.models import Count, Q
 from django.utils import timezone
 from datetime import timedelta
-from api.services.outagers import get_outages_stats,get_outages_stats_today
+from api.services.outages import get_outages_stats,get_outages_stats_today
 
 router = Router(tags=['outages'])
 

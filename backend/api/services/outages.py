@@ -5,7 +5,7 @@ from datetime import timedelta
 
 async def get_outages_stats(request):
     _type_query = Q(end_date__gte=timezone.now())
-    _type_query.add(Q(start_date_lte=timezone.now()), Q.AND)
+    _type_query.add(Q(start_date__lte=timezone.now()), Q.AND)
     _type_query.add(Q(type__in=['HW', 'CW', 'EL']), Q.AND)
     _type_data = await Blackout.objects.filter(
         _type_query
