@@ -5,7 +5,7 @@ from api.schemas.errors import ErrorSchema
 from django.db.models import Count, Q
 from django.utils import timezone
 from datetime import timedelta
-from api.services.outagers import get_outages_stats
+from api.services.outagers import get_outages_stats,get_outages_stats_today
 
 router = Router(tags=['outages'])
 
@@ -40,26 +40,16 @@ async def outages_stats(request):
 @router.get('/stats/today/', response={200: TodayStatsOut, 500: ErrorSchema})
 async def today_stats(request):
     try:
-        today = timezone.now().date()
-        yesterday = today - timedelta(days=1)
-
-        today_count = await Blackout.objects.filter(start_date__date=today, end_date__isnull=True).acount()
-        yesterday_count = await Blackout.objects.filter(start_date__date=yesterday, end_date__isnull=True).acount()
-        planned_count = await Blackout.objects.filter(start_date__date=today, description__icontains="плановое").acount()
-
-        difference = today_count - yesterday_count
-        difference_percent = round(abs(difference / yesterday_count * 100), 2) if yesterday_count > 0 else 0
-        trend = "up" if difference > 0 else "down" if difference < 0 else "same"
-
-        return {
-            "date": today.strftime("%Y-%m-%d"),
-            "today_count": today_count,
-            "yesterday_count": yesterday_count,
-            "planned_count": planned_count,
-            "difference": difference,
-            "difference_percent": int(difference_percent),
-            "trend": trend
+        today_count, yesterday_count, planned_count = get_outages_stats_today(request)
+        percent = round(yesterday_count/(today_count/100))
+        return{
+            'date' : timezone.now().date(),
+            'today_count' : today_count,
+            'yesterday_count':yesterday_count,
+            'difference':today_count-yesterday_count,
+            'percent':100-percent,
+            'trend' : 'up'if today_count> yesterday_count else\
+                'down' if today_count< yesterday_count else 'same'
         }
-
     except Exception as e:
         return 500, {"message": "Ошибка при получении статистики на сегодня"}
