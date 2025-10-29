@@ -19,7 +19,8 @@
     "silly-canny-lib": "file:../silly-canny-lib/silly-canny-lib-0.1.0.tgz",
     "tailwindcss": "^4.1.16",
     "vue": "^3.5.22",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue-yandex-maps": "^2.2.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",

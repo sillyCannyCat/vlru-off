@@ -1,4 +1,5 @@
 <script setup>
+import MapView from '@/views/MapView.vue'
 import ComplaintsGraphBlock from './ComplaintsGraphBlock.vue'
 import OrgOutagesBlock from './OrgOutagesBlock.vue'
 import TypeOutagesBlock from './TypeOutagesBlock.vue'
@@ -169,6 +170,10 @@ const complaintData60m = [
             :complaintsData60m="complaintData60m"
           />
         </div>
+      </div>
+
+      <div class="min-w-[400px] h-[400px] rounded-[6px] overflow-hidden">
+        <MapView />
       </div>
     </div>
   </div>
