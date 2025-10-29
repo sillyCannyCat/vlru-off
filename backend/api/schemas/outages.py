@@ -12,3 +12,12 @@ class OrganizationStat(Schema):
 class OutagesStatsOut(Schema):
     types: Dict[str, OutageTypeStat]
     organizations: List[OrganizationStat]
+
+class TodayStatsOut(Schema):
+    date: str
+    today_count: int
+    yesterday_count: int
+    planned_count: int
+    difference: int
+    difference_percent: int
+    trend: str

@@ -1,6 +1,6 @@
 django==5.0.6
 django-ninja[async]==1.3.0
-django-ulidfield==0.1.1
+django-ulidfield==0.1.0
 psycopg2-binary==2.9.9
 httpx==0.27.0
 aiocache==0.12.2

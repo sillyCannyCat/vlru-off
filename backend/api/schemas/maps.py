@@ -8,15 +8,6 @@ class AddressSuggestion(Schema):
     street: Optional[str] = None
     full_address: Optional[str] = None
 
-class TodayStatsOut(Schema):
-    date: str
-    today_count: int
-    yesterday_count: int
-    planned_count: int
-    difference: int
-    difference_percent: int
-    trend: str
-
 class BuildingOut(Schema):
     building_id: str
     street_name: Optional[str]
