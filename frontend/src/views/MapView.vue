@@ -50,15 +50,26 @@ function initMap() {
       controls: ['zoomControl', 'fullscreenControl'],
     })
 
-    markers.forEach((m) => {
-      const placemark = new window.ymaps.GeoObject({
-        geometry: {
-          type: 'Point', // тип геометрии - точка
-          coordinates: m.coords, // координаты точки
-        },
-      })
-      map.geoObjects.add(placemark)
+    const objects = markers.map((m, i) => ({
+      type: 'Feature',
+      id: i,
+      geometry: {
+        type: 'Point',
+        coordinates: m.coords,
+      },
+      properties: {
+        balloonContent: `<b>${m.title}</b><br>${m.desc}`,
+      },
+    }))
+
+    const objectManager = new window.ymaps.ObjectManager({
+      clusterize: true,
+      gridSize: 64,
+      clusterDisableClickZoom: true,
     })
+
+    objectManager.add({ type: 'FeatureCollection', features: objects })
+    map.geoObjects.add(objectManager)
   })
 }
 </script>
