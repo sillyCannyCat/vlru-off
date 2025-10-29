@@ -17,7 +17,7 @@ async def outages_stats(request):
             'CW': 'cold_water',
             'EL': 'electricity'
         }
-        _type_data, org_data = get_outages_stats(request)
+        _type_data, org_data = await get_outages_stats(request)
         _type_result = dict()
         async for item in _type_data:
             _type_result[_type_mapping[item[0]]] = {'value' : item['count']}
@@ -40,7 +40,7 @@ async def outages_stats(request):
 @router.get('/stats/today/', response={200: TodayStatsOut, 500: ErrorSchema})
 async def today_stats(request):
     try:
-        today_count, yesterday_count, planned_count = get_outages_stats_today(request)
+        today_count, yesterday_count, planned_count = await get_outages_stats_today(request)
         percent = round(yesterday_count/(today_count/100))
         return{
             'date' : timezone.now().date(),

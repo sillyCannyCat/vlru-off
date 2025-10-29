@@ -3,7 +3,6 @@ from api.schemas.complaints import ComplaintSummaryOut, ComplaintGraphOut, Compl
 from api.schemas.errors import ErrorSchema
 from api.services.complaints import get_complaints, get_complaints_graph
 from django.utils import timezone
-from datetime import timedelta
 
 
 router = Router(tags=['complaints'])
@@ -18,7 +17,7 @@ async def complaints_summary(request):
             'CW': 'Cold water',
             'EL': 'Electricity'
         }
-        complaints_data = get_complaints(request)
+        complaints_data = await get_complaints(request)
         count = 0
         _types = list()
         for item in complaints_data:
@@ -45,7 +44,7 @@ async def complaints_graph(request):
         return 400, {'message':'Неправильный type\n'
                                'Должен быть или "24h" или "60m"'}
     try:
-        raw_data = get_complaints_graph(_type)
+        raw_data = await get_complaints_graph(_type)
         data = list()
         for timestamp in raw_data.keys():
             to_data = dict()
