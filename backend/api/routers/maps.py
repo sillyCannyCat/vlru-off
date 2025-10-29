@@ -1,6 +1,6 @@
 from ninja import Router
 from typing import List
-from api.models import Blackout, BlackoutsBuilding, Building, Street
+from api.models import Blackout, BlackoutBuilding, Building, Street
 from api.schemas.maps import AddressSuggestion, BlackoutOut
 from api.schemas.errors import ErrorSchema
 from django.db.models import Prefetch

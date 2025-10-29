@@ -55,6 +55,6 @@ class Building(models.Model):
     city_id = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
     coordinates = models.CharField(max_length = 128)
 
-class BlackoutsBuilding(models.Model):
+class BlackoutBuilding(models.Model):
     blackout_id = models.ForeignKey(Blackout, on_delete=models.CASCADE)
     building_id = models.ForeignKey(Building, on_delete=models.CASCADE)

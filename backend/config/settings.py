@@ -64,7 +64,7 @@ ASGI_APPLICATION = 'config.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'VLOFFDataBase',
+        'NAME': 'VLOFFDataBase.db',
     }
 }
 
