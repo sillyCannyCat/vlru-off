@@ -112,7 +112,7 @@ async def address_autocomplete(request, query: str = ''):
 
 @router.get('/blackouts/', response={200: List[BlackoutOut], 404: ErrorSchema})
 async def get_blackouts(request):
-    blackouts = await Blackout.objects.filter(end_data__isnull=True) \
+    blackouts = await Blackout.objects.filter(end_date__isnull=True) \
         .select_related('initiator_id', 'source_id') \
         .prefetch_related(
             Prefetch(
@@ -148,7 +148,7 @@ async def get_blackouts(request):
         results.append({
             'blackout_id': str(blackout.blackout_id),
             'start_date': blackout.start_date,
-            'end_date': blackout.end_data,
+            'end_date': blackout.end_date,
             'description': blackout.description,
             'type': blackout.type,
             'initiator_name': blackout.initiator_id.initiator_name if blackout.initiator_id else None,

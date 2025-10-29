@@ -18,7 +18,7 @@ class Blackout(models.Model):
     }
     blackout_id = ULIDField(primary_key=True)
     start_date = models.DateTimeField(auto_now=True)
-    end_dateё = models.DateTimeField(default=None)
+    end_date = models.DateTimeField(default=None)
     description = models.CharField(max_length=256, null=True, default=None)
     type = models.CharField(max_length=2, choices=TYPE_CHOICES)
     initiator_id = models.ForeignKey(Initiator, on_delete=models.SET_NULL, null=True)
