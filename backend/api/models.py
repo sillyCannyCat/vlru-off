@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import length
 from django_ulidfield import ULIDField
+from datetime import timedelta
+from django.utils import timezone
 
 class Initiator(models.Model):
     initiator_id = models.IntegerField(primary_key=True)
