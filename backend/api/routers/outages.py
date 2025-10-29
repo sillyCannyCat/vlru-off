@@ -12,8 +12,28 @@ router = Router(tags=['outages'])
 @router.get('/stats/', response={200: OutagesStatsOut, 500: ErrorSchema})
 async def outages_stats(request):
     try:
+        _type_mapping = {
+            'HW': 'hot_water',
+            'CW': 'cold_water',
+            'EL': 'electricity'
+        }
         _type_data, org_data = get_outages_stats(request)
-        #доделать относительно предыдущей версии
+        _type_result = dict()
+        async for item in _type_data:
+            _type_result[_type_mapping[item[0]]] = {'value' : item['count']}
+        for _key in _type_mapping.keys():
+            _type_result.setdefault(_key, {'value':0})
+        org_result = list()
+        async for item in org_data:
+            org_result.append({
+                'id' : org_data['initiator_id'],
+                'name' : org_data['initiator_id__initiator_name'],
+                'value' : org_data['count']
+            })
+        return {
+            'types' : _type_result,
+            'organizations' : org_data
+        }
     except Exception as e:
         return 500, {"message": "Ошибка при получении статистики отключений"}
 

@@ -3,11 +3,6 @@ from django.db.models import Count, Q
 from django.utils import timezone
 
 async def get_outages_stats(request):
-    type_mapping = {
-        'HW': 'hot_water',
-        'CW': 'cold_water',
-        'EL': 'electricity'
-    }
     _type_query = Q(end_date__gte=timezone.now())
     _type_query.add(Q(start_date_lte=timezone.now()), Q.AND)
     _type_query.add(Q(type__in=['HW', 'CW', 'EL']), Q.AND)
