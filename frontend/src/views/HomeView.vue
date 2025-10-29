@@ -15,8 +15,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <MobileHome v-if="isMobile" />
-  <DesktopHome v-else />
+  <div class="w-full flex justify-center">
+    <MobileHome v-if="isMobile" />
+    <DesktopHome v-else />
+  </div>
 </template>
 
 <style scoped></style>

@@ -30,7 +30,7 @@ const activeTab = computed({
         v-for="tab in tabs"
         :key="tab.value"
         :class="[
-          'px-[16px] py-[5px] rounded-[4px] text-button-adaptive transition-colors',
+          'px-[16px] py-[4px] rounded-[4px] text-button-adaptive transition-colors',
           activeTab === tab.value
             ? 'bg-[var(--color-text-primary)] text-white cursor-default'
             : 'text-[var(--color-text-primary)] cursor-pointer',

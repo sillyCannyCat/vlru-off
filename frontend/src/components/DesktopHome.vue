@@ -101,13 +101,13 @@ const complaintData60m = [
     <!-- Container -->
     <div class="flex flex-row w-full items-start justify-start gap-x-[16px] gap-y-[32px]">
       <!-- Left side -->
-      <div class="w-full min-w-[392px] inline-flex flex-col gap-[32px]">
+      <div class="w-full min-w-[700px] inline-flex flex-col gap-[32px]">
         <!-- Search bar -->
-        <div class="self-stretch inline-flex flex-col justify-start items-start gap-[6px]">
+        <div class="self-stretch inline-flex flex-col justify-start items-start gap-[8px]">
           <Input prefixIcon="/icons/search.svg" placeholder="Информация по вашему адресу"></Input>
-          <span class="text-body-regular"
-            ><span class="text-body-medium">Совет:</span> Введите свой адрес, чтобы узнать об
-            отключениях и восстановлениях</span
+          <span class="text-body-regular flex gap-[8px]"
+            ><Label variant="tip">Совет</Label> Введите свой адрес, чтобы узнать об отключениях и
+            восстановлениях</span
           >
         </div>
 
@@ -158,9 +158,9 @@ const complaintData60m = [
           <!-- Title and summorized info -->
           <div class="self-stretch inline-flex flex-col justify-start items-start gap-[8px]">
             <p class="text-h3-medium">Отключения по жалобам</p>
-            <span class="text-body-regular"
-              ><span class="text-body-medium">Сводка:</span> Жители сообщают о множественных
-              отключениях горячей воды и света</span
+            <span class="text-body-regular flex gap-[8px]"
+              ><Label variant="tip">Сводка</Label> Жители сообщают о множественных отключениях
+              горячей воды и света</span
             >
           </div>
 
