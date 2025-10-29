@@ -21,7 +21,7 @@ class Blackout(models.Model):
     }
     blackout_id = ULIDField(primary_key=True)
     start_date = models.DateTimeField(auto_now=True)
-    end_data = models.DateTimeField(default=None)
+    end_date = models.DateTimeField(default=None)
     description = models.CharField(length=256, null=True, default=None)
     type = models.CharField(max_length=2, choices=TYPE_CHOICES)
     initiator_id = models.ForeignKey(Initiator, on_delete=models.SET_NULL, null=True)
@@ -54,20 +54,10 @@ class Building(models.Model):
     district_id = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
     folk_district_id = models.ForeignKey(FolkDistrict, on_delete=models.SET_NULL, null=True)
     is_current = models.BinaryField()
-    building_type = models.ForeignKey(BuildingType, on_delete=models.SET_NULL, null=True)
+    building_type_id = models.ForeignKey(BuildingType, on_delete=models.SET_NULL, null=True)
     city_id = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
     coordinates = models.CharField(length = 128)
 
 class BlackoutsBuilding(models.Model):
     blackout_id = models.ForeignKey(Blackout, on_delete=models.CASCADE)
     building_id = models.ForeignKey(Building, on_delete=models.CASCADE)
-
-class Complaint(models.Model):
-    complaint_id = models.AutoField(primary_key=True)
-    description = models.TextField(blank=True, null=True)
-    type = models.CharField(max_length=10)  # HW, CW, EL
-    created_at = models.DateTimeField(default=timezone.now)
-    building_id = models.ForeignKey(Building, on_delete=models.CASCADE, null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.type} - {self.created_at}"
