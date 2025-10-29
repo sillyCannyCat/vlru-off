@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0104f4-3caa-4fae-ae2a-6cb444859bd7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/api/services/maps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/routers/address.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/address.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/schemas/address.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/address.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/services/address.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/services/address.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/routers/maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/maps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/schemas/maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/maps.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
