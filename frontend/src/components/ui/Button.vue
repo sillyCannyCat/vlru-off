@@ -1,7 +1,42 @@
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  variant: {
+    type: String,
+    default: 'default',
+    validator: (value) => ['default', 'outline', 'link'].includes(value),
+  },
+  as: {
+    type: String,
+    default: 'button',
+  },
+  suffixIcon: {
+    type: String,
+    default: '',
+  },
+})
+
+defineEmits(['click'])
+
+const buttonClasses = computed(() => {
+  const baseClasses =
+    'rounded-[6px] py-[8px] inline-flex justify-center items-center gap-[8px] cursor-pointer transition'
+  if (props.variant === 'default') {
+    return `${baseClasses} text-button-adaptive px-[16px] bg-[var(--color-text-primary)] text-white hover:bg-[var(--color-text-secondary)]`
+  } else if (props.variant === 'outline') {
+    return `${baseClasses} text-button-adaptive px-[16px] border-[1px] border-[var(--color-text-muted)] text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)]`
+  } else if (props.variant === 'link') {
+    return `${baseClasses} text-small-regular underline text-[var(--color-text-primary)]`
+  }
+
+  return baseClasses
+})
+</script>
+
 <template>
-  <button
-    class="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
-  >
+  <component :is="as" :class="buttonClasses" @click="$emit('click', $event)">
     <slot />
-  </button>
+    <img v-if="suffixIcon" :src="props.suffixIcon" class="w-[16px] h-[16px]" />
+  </component>
 </template>

@@ -1,3 +1,4 @@
+<!-- src/components/Input.vue -->
 <script setup>
 import { computed } from 'vue'
 
@@ -98,7 +99,7 @@ const inputClasses = computed(() => {
 
 <style scoped>
 .placeholder-custom::placeholder {
-  color: #c0c0c0;
+  color: var(--color-text-muted);
   opacity: 1;
 }
 </style>

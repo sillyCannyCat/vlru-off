@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+body {
+  background-color: var(--color-background);
+}
+
 @font-face {
   font-family: 'SF Pro';
   src: url('/fonts/SF-Pro-Regular.otf') format('opentype');

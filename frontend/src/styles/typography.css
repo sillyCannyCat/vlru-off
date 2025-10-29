@@ -57,10 +57,25 @@
   font-weight: 500;
   letter-spacing: -1.48%;
 }
-.text-h3-medium {
+.text-h1-medium {
   font-family: var(--font-family-sans);
   font-size: 24px;
   line-height: 28px;
   font-weight: 500;
   letter-spacing: -1.24%;
+}
+
+/* Adaptive typography */
+.text-button-adaptive {
+  font-family: var(--font-family-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: -1.24%;
+}
+@media (min-width: 640px) {
+  .text-button-adaptive {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }

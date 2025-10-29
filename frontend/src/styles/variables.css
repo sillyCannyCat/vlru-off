@@ -4,8 +4,11 @@
 
   /* Accent */
   --color-accent-orange: #f97d41;
+  --color-accent-orange-bg: rgba(249, 125, 65, 0.6);
   --color-accent-blue: #4197f9;
+  --color-accent-blue-bg: rgba(65, 151, 249, 0.6);
   --color-accent-purple: #8441f9;
+  --color-accent-purple-bg: rgba(132, 65, 249, 0.6);
 
   /* Text */
   --color-text-primary: #000000;
@@ -14,7 +17,9 @@
 
   /* Status */
   --color-status-success: #31d158;
+  --сolor-status-success-bg: rgba(49, 209, 88, 0.1);
   --color-status-destructive: #e53935;
+  --color-status-destructive-bg: rgba(229, 57, 53, 0.1);
 
   /* Background */
   --color-background: #f9f9f9;
