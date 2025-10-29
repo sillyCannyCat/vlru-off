@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0104f4-3caa-4fae-ae2a-6cb444859bd7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/farpost.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/routers/maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/maps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/routers/telegram.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/telegram.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/schemas/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/schemas/maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/maps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/schemas/telegram.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/telegram.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +23,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="34cwUIDh7fuqanV9WxIILnFqu5E" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -51,7 +36,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "back-end",
+    "last_opened_file_path": "C:/Users/Alexandr/PycharmProjects/farpost"
   }
 }]]></component>
   <component name="RecentsManager">
