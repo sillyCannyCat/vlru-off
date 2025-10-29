@@ -18,7 +18,8 @@
     "npm": "^11.6.2",
     "silly-canny-lib": "file:../silly-canny-lib/silly-canny-lib-0.1.0.tgz",
     "tailwindcss": "^4.1.16",
-    "vue": "^3.5.22"
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",

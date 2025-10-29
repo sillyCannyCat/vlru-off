@@ -56,13 +56,9 @@ const inputClasses = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-[6px]">
+  <div class="w-full flex flex-col gap-[6px]">
     <!-- Label -->
-    <label
-      v-if="label"
-      :for="id"
-      class="text-small-medium text-[var(--color-text-primary)]"
-    >
+    <label v-if="label" :for="id" class="text-small-medium text-[var(--color-text-primary)]">
       {{ label }}
     </label>
 

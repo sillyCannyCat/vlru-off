@@ -43,10 +43,8 @@ const hoveredBarIndex = ref(null)
 
 const maxValue = computed(() => {
   return Math.max(
-    ...props.data.map((item) =>
-      categories.reduce((sum, cat) => sum + (item[cat] || 0), 0)
-    ),
-    1
+    ...props.data.map((item) => categories.reduce((sum, cat) => sum + (item[cat] || 0), 0)),
+    1,
   )
 })
 
@@ -65,8 +63,7 @@ const bars = computed(() => {
     let yStack = 0
     const segments = categories.map((cat, j) => {
       const value = item[cat] || 0
-      const height =
-        (value / maxValue.value) * (chartHeight - marginTop - marginBottom)
+      const height = (value / maxValue.value) * (chartHeight - marginTop - marginBottom)
       const y = chartHeight - marginBottom - yStack - height
       yStack += height
       return {
@@ -77,9 +74,7 @@ const bars = computed(() => {
         color: categoryColors[cat],
         hoverColor: categoryHoverColors[cat],
         label: categoryLabels[cat],
-        isTop:
-          j === categories.length - 1 ||
-          (value > 0 && item[categories[j + 1]] === 0),
+        isTop: j === categories.length - 1 || (value > 0 && item[categories[j + 1]] === 0),
       }
     })
     return {
@@ -105,8 +100,7 @@ const showTooltip = (evt, bar, index) => {
   let x = evt.clientX - rect.left + 10
   let y = evt.clientY - rect.top - 10
 
-  if (x + tooltipWidth > rect.width)
-    x = evt.clientX - rect.left - tooltipWidth - 10
+  if (x + tooltipWidth > rect.width) x = evt.clientX - rect.left - tooltipWidth - 10
   if (y < 0) y = 0
   if (y + tooltipHeight > rect.height) y = rect.height - tooltipHeight
 
@@ -178,9 +172,7 @@ onBeforeUnmount(() => {
             :height="Math.max(1, seg.height)"
             :fill="hoveredBarIndex === i ? seg.hoverColor : seg.color"
             class="transition-all"
-            :style="
-              seg.isTop ? 'clip-path: inset(0 0 0 round 2px 2px 0 0)' : ''
-            "
+            :style="seg.isTop ? 'clip-path: inset(0 0 0 round 2px 2px 0 0)' : ''"
           />
         </g>
       </g>

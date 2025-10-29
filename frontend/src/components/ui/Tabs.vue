@@ -24,13 +24,13 @@ const activeTab = computed({
   <div class="inline-flex flex-col">
     <!-- Tab Headers -->
     <div
-      class="flex p-[4px] rounded-[10px] outline-1 outline-offset-[-1px] outline-[var(--color-text-muted)] bg-[var(--color-background-secondary)]"
+      class="flex p-[4px] rounded-[6px] outline-1 outline-offset-[-1px] outline-[var(--color-text-muted)] bg-[var(--color-background-primary)]"
     >
       <button
         v-for="tab in tabs"
         :key="tab.value"
         :class="[
-          'px-[16px] py-[8px] rounded-[6px] text-button-adaptive transition-colors',
+          'px-[16px] py-[5px] rounded-[4px] text-button-adaptive transition-colors',
           activeTab === tab.value
             ? 'bg-[var(--color-text-primary)] text-white cursor-default'
             : 'text-[var(--color-text-primary)] cursor-pointer',

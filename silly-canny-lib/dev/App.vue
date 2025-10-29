@@ -41,7 +41,7 @@ const tabList = [
 ]
 
 const complaintData = [
-  // { time: '00:00', cold_water: 2, hot_water: 1, electricity: 1 },
+  { time: '00:00', cold_water: 2, hot_water: 1, electricity: 1 },
   { time: '01:00', cold_water: 1, hot_water: 1, electricity: 1 },
   { time: '02:00', cold_water: 1, hot_water: 0, electricity: 1 },
   { time: '03:00', cold_water: 1, hot_water: 1, electricity: 0 },
