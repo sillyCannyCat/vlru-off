@@ -1,16 +1,20 @@
 from ninja import Schema
 from typing import List
 
+
 class AddressAutocompleteItem(Schema):
-    type:str
+    type: str
     address: str
+
 
 class AddressAutocompleteOut(Schema):
     data: List[AddressAutocompleteItem]
 
+
 class AddressOutOutagesItem(Schema):
     time: str
-    date:str
+    date: str
+
 
 class AddressOut(Schema):
     date: str

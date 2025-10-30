@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0104f4-3caa-4fae-ae2a-6cb444859bd7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/faker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/VLOFFDataBase" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/VLOFFDataBase.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/VLOFFDataBase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/routers/complaints.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/complaints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/routers/outages.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/outages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/schemas/complaints.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/complaints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/schemas/outages.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/outages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/routers/address.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/address.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/routers/telegram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/schemas/address.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/schemas/address.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/schemas/telegram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/services/address.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/services/address.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/services/complaints.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/services/complaints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/urls.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
