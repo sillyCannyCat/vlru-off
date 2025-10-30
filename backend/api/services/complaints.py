@@ -7,7 +7,6 @@ from asgiref.sync import sync_to_async
 
 @sync_to_async
 def get_complaints(request):
-    today = timezone.now()
     comp_query = Q(start_date__gte=timezone.now() - timedelta(days=1))
     comp_query.add(Q(end_date__isnull=True), Q.AND)
     comp_data = Blackout.objects.filter(comp_query) \

@@ -19,9 +19,12 @@ async def complaints_summary(request):
         complaints_data = await get_complaints(request)
         count = 0
         _types = list()
-        for item in complaints_data:
-            _types.append(_type_vals[item[0]])
-            count += item[-1]
+        print("Hello")
+        async for item in complaints_data:
+            print(item)
+            _types.append(_type_vals[item['type']])
+            count += item['count']
+        print("Hi")
         return {
             'report_date' : str(timezone.now().date),
             'summary':_types,
