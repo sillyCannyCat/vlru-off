@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     container_name: vlru-frontend
     ports:
-      - "8080:80"
+      - "3000:80"
     volumes:
       - ./frontend:/app
     environment:

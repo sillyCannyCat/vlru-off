@@ -26,7 +26,7 @@ const { byOrgOutages, byOrgOutagesLen } = defineProps({
         :class="!(orgOutages.id % 2 === 0) ? 'bg-[var(--color-background-secondary)]' : ''"
         class="self-stretch h-[32px] inline-flex justify-between items-center"
       >
-        <span class="text-small-regular">{{ orgOutages.name }}</span>
+        <span class="text-small-regular w-full truncate line-clamp-1">{{ orgOutages.name }}</span>
         <Button variant="link">{{
           `${orgOutages.value} ${declOfNum(orgOutages.value, ['дом', 'дома', 'домов'])}`
         }}</Button>
