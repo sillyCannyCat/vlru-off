@@ -1,3 +1,4 @@
+from idna import valid_label_length
 from ninja import Router
 from api.schemas.complaints import ComplaintSummaryOut, ComplaintGraphOut, ComplaintGraphItem
 from api.schemas.errors import ErrorSchema
@@ -61,15 +62,16 @@ async def complaints_graph(request, type: str):
     try:
         raw_data = await get_complaints_graph(type)
         data = []
-
         for timestamp, values in raw_data.items():
             row = {
                 "time": f"{timestamp.hour:02}:{timestamp.minute:02}"
             }
-            for black_type, value in values.items():
-                row[black_type_mapping[black_type]] = value
+            print(values[0])
+            for _type in black_type_mapping:
+                row.setdefault(black_type_mapping[_type], 0)
+            row[black_type_mapping[values[0]]] = values[-1]
             data.append(row)
-
+        print(data)
         return {"data": data}
 
     except Exception as e:

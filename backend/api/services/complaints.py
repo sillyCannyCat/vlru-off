@@ -17,35 +17,40 @@ def get_complaints(request):
 
 @sync_to_async
 def get_complaints_graph(_type: str):
-    today = timezone.now()
+    today = timezone.now() + timedelta(hours=10)
     data = dict()
     if _type == '24h':
-        for hour in range(today.date().day):
+        for hour in range(today.hour):
             now_time = today
-            now_time.hour = hour
-            now_time.minute = 0
-            now_time.second = 0
+            now_time = now_time.replace(hour=hour)
+            now_time = now_time.replace(minute=0)
+            now_time = now_time.replace(second=0)
             query = Q(start_date__gte=now_time)
             query.add(Q(end_date__isnull=True), Q.AND)
             query.add(Q(start_date__lt=now_time + timedelta(days=1)), Q.AND)
             query.add(Q(type__in=['HW', 'CW', 'EL']), Q.AND)
             now_data = Blackout.objects.filter(
                 query
-            ).values('type').annotate(count=Count('blackout_id')).all()
-            data[now_time] = now_data
+            ).values('type').annotate(count=Count('blackout_id'))\
+                .values_list('type', 'count')
+            # print(now_data.values_list()[0])
+            if len(now_data) >0:
+                data[now_time] = now_data[0]
     elif _type == '60m':
-        for hour in range(today.date().day):
+        for hour in range(today.hour):
             for minute_cof in range(12):
                 now_time = today
-                now_time.hour = hour
-                now_time.minute = 5 * minute_cof
-                now_time.second = 0
+                now_time = now_time.replace(hour=hour)
+                now_time = now_time.replace(minute=5*minute_cof)
+                now_time = now_time.replace(second=0)
                 query = Q(start_date__gte=now_time)
                 query.add(Q(end_date__isnull=True), Q.AND)
                 query.add(Q(start_date__lt=now_time + timedelta(days=1)), Q.AND)
                 query.add(Q(type__in=['HW', 'CW', 'EL']), Q.AND)
                 now_data = Blackout.objects.filter(
                     query
-                ).values('type').annotate(count=Count('blackout_id')).all()
-                data[now_time] = now_data
+                ).values('type').annotate(count=Count('blackout_id')) \
+                    .values_list('type', 'count')
+                if len(now_data) > 0:
+                    data[now_time] = now_data[0]
     return data
