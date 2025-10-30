@@ -7,6 +7,7 @@ import TypeOutagesBlock from './TypeOutagesBlock.vue'
 import Button from './ui/Button.vue'
 import Input from './ui/Input.vue'
 import Label from './ui/Label.vue'
+import NotificationBanner from './ui/NotificationBanner.vue'
 import StatsLabel from './ui/StatsLabel.vue'
 
 const outagesStore = useOutagesStore()
@@ -123,6 +124,20 @@ const outagesStore = useOutagesStore()
         <!-- Useful resources -->
         <div class="self-stretch inline-flex flex-col justify-start items-start gap-[8px]">
           <p class="text-h3-medium">Полезные ресурсы</p>
+
+          <NotificationBanner
+            gradient="purple"
+            title="Подключите уведомления в Telegram"
+            desc="о плановых и не только отключениях"
+            suffixIcon="/icons/telegram.svg"
+          />
+
+          <NotificationBanner
+            gradient="orange"
+            title="Передайте показания счётчиков до 26.10"
+            desc="холодной, горячей воды и электроэнергии"
+            suffixIcon="/icons/meter.svg"
+          />
         </div>
       </div>
     </div>

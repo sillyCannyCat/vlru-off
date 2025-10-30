@@ -7,6 +7,7 @@ import TypeOutagesBlock from './TypeOutagesBlock.vue'
 import Button from './ui/Button.vue'
 import Input from './ui/Input.vue'
 import Label from './ui/Label.vue'
+import NotificationBanner from './ui/NotificationBanner.vue'
 import StatsLabel from './ui/StatsLabel.vue'
 
 const outagesStore = useOutagesStore()
@@ -32,6 +33,13 @@ const toggleOutages = () => {
 
       <Button @click="loginUser" suffixIcon="/icons/log-in.svg">Войти</Button>
     </div>
+
+    <NotificationBanner
+      gradient="purple"
+      title="Подключите уведомления об отключениях в Telegram"
+      desc="Нажми на баннер"
+      suffixIcon="/icons/telegram.svg"
+    />
 
     <!-- Search bar -->
     <div class="self-stretch inline-flex flex-col justify-start items-start gap-[6px]">

@@ -26,7 +26,7 @@ const bannerClasses = computed(() => {
     'w-full h-[70px] px-[16px] py-[12px] rounded-[6px] inline-flex justify-between items-center transition'
 
   if (props.gradient === 'orange') {
-    return `${baseClasses} bg-gradient-to-r from-[var(--color-accent-orange)] to-[#FFAD79]`
+    return `${baseClasses} bg-[var(--color-accent-orange)]`
   } else if (props.gradient === 'purple') {
     return `${baseClasses} bg-gradient-to-r from-[#8441F9] to-[#DE53F7]`
   }
@@ -45,10 +45,6 @@ const bannerClasses = computed(() => {
         {{ props.desc }}
       </div>
     </div>
-    <img
-      v-if="props.suffixIcon"
-      :src="suffixIcon"
-      class="object-contain w-[40px] h-[40px]"
-    />
+    <img v-if="props.suffixIcon" :src="suffixIcon" class="object-contain w-[40px] h-[40px]" />
   </div>
 </template>

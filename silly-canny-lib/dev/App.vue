@@ -23,7 +23,7 @@
 
   <Tabs v-model="activeTab" :tabs="tabList" />
   <div v-if="activeTab == 'tab1'">SOSAL</div>
-  <NotificationBanner variant="notifications" />
+  <NotificationBanner gradient="purple" suffixIcon="/icons/telegram-icon.svg" />
 
   <div class="px-[16px] py-[32px] max-w-4xl mx-auto">
     <BarChart :data="complaintData" index="time" class="w-full" />
