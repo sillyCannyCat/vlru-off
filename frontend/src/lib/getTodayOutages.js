@@ -1,6 +1,6 @@
-import axios from 'axios'
+import api from './apiAxios.js'
 
 export async function getTodayOutages() {
-  const response = await axios.get(``)
+  const response = await api.get(`/outages/stats/today/`)
   return response.data
 }

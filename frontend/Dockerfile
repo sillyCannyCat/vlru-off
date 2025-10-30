@@ -1,11 +1,9 @@
 FROM node:20-alpine AS builder
 
 WORKDIR /app
-COPY frontend/package*.json ./
-COPY silly-canny-lib ./silly-canny-lib/
-RUN sed -i 's|"silly-canny-lib": "file:[^"]*"|"silly-canny-lib": "file:./silly-canny-lib"|g' package.json
+COPY package*.json ./
 RUN npm install --legacy-peer-deps
-COPY frontend/ .
+COPY . .
 RUN npm run build
 
 FROM nginx:alpine

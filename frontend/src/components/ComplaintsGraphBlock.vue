@@ -5,8 +5,14 @@ import Button from './ui/Button.vue'
 import Tabs from './ui/Tabs.vue'
 
 const { complaintsData24h, complaintsData60m } = defineProps({
-  complaintsData24h: { type: Array, required: true },
-  complaintsData60m: { type: Array, required: true },
+  complaintsData24h: {
+    type: Array,
+    default: () => [],
+  },
+  complaintsData60m: {
+    type: Array,
+    default: () => [],
+  },
 })
 
 const graphTabs = [

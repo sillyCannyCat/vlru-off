@@ -1,6 +1,6 @@
-import axios from 'axios'
+import api from './apiAxios.js'
 
 export async function getComplaintsData(period) {
-  const response = await axios.get(``, { params: { type: period } })
+  const response = await api.get(`/complaints/graph/`, { params: { type: period } })
   return response.data
 }

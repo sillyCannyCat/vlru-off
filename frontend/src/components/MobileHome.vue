@@ -31,7 +31,7 @@ const toggleOutages = () => {
         </div>
       </div>
 
-      <Button @click="loginUser" suffixIcon="/icons/log-in.svg">Войти</Button>
+      <Button suffixIcon="/icons/log-in.svg">Войти</Button>
     </div>
 
     <NotificationBanner
