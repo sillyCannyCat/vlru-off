@@ -11,24 +11,37 @@ router = Router(tags=['complaints'])
 async def complaints_summary(request):
     try:
         _type_vals = {
-            'HT': 'Heat',
-            'HW': 'Hot water',
-            'CW': 'Cold water',
-            'EL': 'Electricity'
+            'HT': 'heat',
+            'HW': 'hot_water',
+            'CW': 'cold_water',
+            'EL': 'electricity'
         }
         complaints_data = await get_complaints(request)
-        count = 0
-        _types = list()
-        print("Hello")
+        count = [
+            ['heat', 0],
+            ['hot_water', 0],
+            ['cold_water', 0],
+            ['electricity', 0]
+        ]
+        _type_to_ind ={
+            'heat': 0,
+            'hot_water': 1,
+            'cold_water': 2,
+            'electricity': 3
+        }
+        all_count = 0
         async for item in complaints_data:
-            print(item)
-            _types.append(_type_vals[item['type']])
-            count += item['count']
-        print("Hi")
+            count[_type_to_ind[_type_vals[item['type']]]][-1] += item['count']
+            all_count += item['count']
+        count.sort(key=lambda x:x[-1], reverse=True)
+        _types = list()
+        for item in filter(lambda x: x[-1] >0, count[:2]):
+            print(item[0])
+            _types.append(item[0])
         return {
-            'report_date' : str(timezone.now().date),
+            'report_date' : str(timezone.now().date()),
             'summary':_types,
-            'count':count,
+            'count':all_count,
             'created_at': str(timezone.now())
         }
     except Exception as e:
