@@ -3,7 +3,7 @@ from typing import List
 
 class ComplaintSummaryOut(Schema):
     report_date: str
-    summary: str
+    summary: list
     count: int
     created_at: str
 

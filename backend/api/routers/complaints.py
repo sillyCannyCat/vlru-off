@@ -4,7 +4,6 @@ from api.schemas.errors import ErrorSchema
 from api.services.complaints import get_complaints, get_complaints_graph
 from django.utils import timezone
 
-
 router = Router(tags=['complaints'])
 
 
@@ -24,13 +23,13 @@ async def complaints_summary(request):
             _types.append(_type_vals[item[0]])
             count += item[-1]
         return {
-            'report_date' : timezone.now().date,
+            'report_date' : str(timezone.now().date),
             'summary':_types,
             'count':count,
-            'created_at':timezone.now()
+            'created_at': str(timezone.now())
         }
     except Exception as e:
-        return 500, {'message':'Ошибка сервера при обработке жалоб'}
+        return 500, {'message': f'Ошибка сервера при обработке жалоб: {e}'}
 
 @router.get('/graph/', response={200: ComplaintGraphOut, 400: ErrorSchema, 500: ErrorSchema})
 async def complaints_graph(request, type: str):
