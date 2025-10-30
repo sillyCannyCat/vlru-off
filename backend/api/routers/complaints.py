@@ -26,33 +26,36 @@ async def complaints_summary(request):
         return {
             'report_date' : timezone.now().date,
             'summary':_types,
-            'complaint_count':count,
+            'count':count,
             'created_at':timezone.now()
         }
     except Exception as e:
         return 500, {'message':'Ошибка сервера при обработке жалоб'}
 
-@router.get('/graph/', response={{200: ComplaintGraphOut, 400: ErrorSchema, 500: ErrorSchema}})
-async def complaints_graph(request):
-    _type = request.get()['type']
+@router.get('/graph/', response={200: ComplaintGraphOut, 400: ErrorSchema, 500: ErrorSchema})
+async def complaints_graph(request, type: str):
     black_type_mapping = {
         'HW': 'hot_water',
         'CW': 'cold_water',
-        'EL': 'electricity'
+        'EL': 'electricity',
     }
-    if _type not in ['24h', '60m']:
-        return 400, {'message':'Неправильный type\n'
-                               'Должен быть или "24h" или "60m"'}
+
+    if type not in ['24h', '60m']:
+        return 400, {'message': 'Неправильный type. Должен быть "24h" или "60m"'}
+
     try:
-        raw_data = await get_complaints_graph(_type)
-        data = list()
-        for timestamp in raw_data.keys():
-            to_data = dict()
-            to_data['time'] = (f'{str(timestamp.hour).ljust(2, '0')}:'
-                               f'{str(timestamp.minute).ljust(2, '0')}')
-            for black_type in raw_data[timestamp]:
-                to_data[black_type_mapping[raw_data[timestamp]]] = raw_data[timestamp][black_type]
-            data.append(to_data)
-        return {'data':data}
-    except Exception:
-        return 500, {'message':'Ошибка сервера при построение граиков'}
+        raw_data = await get_complaints_graph(type)
+        data = []
+
+        for timestamp, values in raw_data.items():
+            row = {
+                "time": f"{timestamp.hour:02}:{timestamp.minute:02}"
+            }
+            for black_type, value in values.items():
+                row[black_type_mapping[black_type]] = value
+            data.append(row)
+
+        return {"data": data}
+
+    except Exception as e:
+        return 500, {"message": f"Ошибка сервера при построении графиков: {e}"}

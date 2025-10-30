@@ -1,10 +1,7 @@
 from ninja import Router
-from api.models import Blackout, Initiator
 from api.schemas.outages import OutagesStatsOut,TodayStatsOut
 from api.schemas.errors import ErrorSchema
-from django.db.models import Count, Q
 from django.utils import timezone
-from datetime import timedelta
 from api.services.outages import get_outages_stats,get_outages_stats_today
 
 router = Router(tags=['outages'])
@@ -47,9 +44,10 @@ async def today_stats(request):
             'today_count' : today_count,
             'yesterday_count':yesterday_count,
             'difference':today_count-yesterday_count,
-            'percent':100-percent,
+            'difference_percentage':100-percent,
             'trend' : 'up'if today_count> yesterday_count else\
-                'down' if today_count< yesterday_count else 'same'
+                'down' if today_count< yesterday_count else 'same',
+            'planned_count':planned_count
         }
     except Exception as e:
         return 500, {"message": "Ошибка при получении статистики на сегодня"}

@@ -19,5 +19,6 @@ class TodayStatsOut(Schema):
     yesterday_count: int
     planned_count: int
     difference: int
-    difference_percent: int
+    difference_percentage: int
     trend: str
+    planned_count: int

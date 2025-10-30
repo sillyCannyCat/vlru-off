@@ -18,7 +18,7 @@ class Blackout(models.Model):
     }
     blackout_id = ULIDField(primary_key=True)
     start_date = models.DateTimeField(auto_now=True)
-    end_date = models.DateTimeField(default=None)
+    end_date = models.DateTimeField(default=None, null=True)
     description = models.CharField(max_length=256, null=True, default=None)
     type = models.CharField(max_length=2, choices=TYPE_CHOICES)
     initiator_id = models.ForeignKey(Initiator, on_delete=models.SET_NULL, null=True)
@@ -47,10 +47,10 @@ class City(models.Model):
 class Building(models.Model):
     building_id = ULIDField(primary_key=True)
     street_id = models.ForeignKey(Street, on_delete=models.SET_NULL, null=True)
-    number = models.IntegerField()
+    number = models.CharField(max_length=64)
     district_id = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
     folk_district_id = models.ForeignKey(FolkDistrict, on_delete=models.SET_NULL, null=True)
-    is_current = models.BinaryField()
+    is_current = models.BooleanField()
     building_type_id = models.ForeignKey(BuildingType, on_delete=models.SET_NULL, null=True)
     city_id = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
     coordinates = models.CharField(max_length = 128)
