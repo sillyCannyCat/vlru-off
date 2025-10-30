@@ -1,13 +1,40 @@
+from os.path import split
+
 from ninja import Router
-from ..schemas.maps import MapResponse, MapPoint
+from api.schemas.maps import MapAddressOut
+from api.schemas.errors import ErrorSchema
+from api.services.maps import get_address
 
-router = Router()
+router = Router(tags=['maps'])
 
-@router.get("/", response=MapResponse)
-def get_map_data(request):
-    # запрос к БД, обработка и т.д.
-    return {
-        "points": [
-            {"id": 1, "name": "Точка 1", "lat": 59.8944, "lon": 30.2642},
-        ]
+def coordinate_converter(cords: str):
+    #"[{\"lat\": 43.35137257429448, \"lon\": 132.190376811014}]"
+    data = cords.split(', ')
+    to_return = list()
+    print(data[0], data[-1])
+    to_return.append(float(data[0][9:]))
+    to_return.append(float(data[-1][7:-3]))
+    # print(data[0][11:], data[-1][9:-3])
+    return to_return
+
+
+@router.get('/', response={200: MapAddressOut, 500: ErrorSchema})
+async def map_address(request):
+    _type_vals = {
+        'HT': 'Heat',
+        'HW': 'Hot water',
+        'CW': 'Cold water',
+        'EL': 'Electricity'
+    }
+    data = await get_address(request)
+    to_return = list()
+    async for item in  data:
+        to_return.append({
+            'type': _type_vals[item['blackout_id__type']],
+            'description': item['blackout_id__description'],
+            'address': item['building_id__street_id__street_name'] + item['building_id__number'],
+            'coordinates': coordinate_converter(item['building_id__coordinates'])
+        })
+    return{
+        'data':to_return
     }

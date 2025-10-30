@@ -1,11 +1,11 @@
 from ninja import Schema
 from typing import List
 
-class MapPoint(Schema):
-    id: int
-    name: str
-    lat: float
-    lon: float
+class MapAddressOutItem(Schema):
+    type: str
+    coordinates: List[float]
+    address: str
+    description: str
 
-class MapResponse(Schema):
-    points: List[MapPoint]
+class MapAddressOut(Schema):
+    data: List[MapAddressOutItem]
