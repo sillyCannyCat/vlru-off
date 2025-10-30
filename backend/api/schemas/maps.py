@@ -3,10 +3,9 @@ from typing import List
 
 class MapAddressOutItem(Schema):
     type: str
-    coordinates: str
+    coordinates: List[float]
     address: str
     description: str
-    coordinates: str
 
 class MapAddressOut(Schema):
     data: List[MapAddressOutItem]

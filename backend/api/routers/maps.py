@@ -1,9 +1,22 @@
+from os.path import split
+
 from ninja import Router
 from api.schemas.maps import MapAddressOut
 from api.schemas.errors import ErrorSchema
 from api.services.maps import get_address
 
 router = Router(tags=['maps'])
+
+def coordinate_converter(cords: str):
+    #"[{\"lat\": 43.35137257429448, \"lon\": 132.190376811014}]"
+    data = cords.split(', ')
+    to_return = list()
+    print(data[0], data[-1])
+    to_return.append(float(data[0][9:]))
+    to_return.append(float(data[-1][7:-3]))
+    # print(data[0][11:], data[-1][9:-3])
+    return to_return
+
 
 @router.get('/', response={200: MapAddressOut, 500: ErrorSchema})
 async def map_address(request):
@@ -15,12 +28,12 @@ async def map_address(request):
     }
     data = await get_address(request)
     to_return = list()
-    for item in data:
+    async for item in  data:
         to_return.append({
             'type': _type_vals[item['blackout_id__type']],
             'description': item['blackout_id__description'],
-            'address': item['building_id__street_id__street_name'] + item['building_id__name'],
-            'coordinates': item['building_id__coordinates']
+            'address': item['building_id__street_id__street_name'] + item['building_id__number'],
+            'coordinates': coordinate_converter(item['building_id__coordinates'])
         })
     return{
         'data':to_return

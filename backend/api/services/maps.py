@@ -1,14 +1,15 @@
 from api.models import BlackoutBuilding
 from django.db.models import Count, Q
 from django.utils import timezone
+from asgiref.sync import sync_to_async
 
-
-async def get_address(request):
+@sync_to_async
+def get_address(request):
     today = timezone.now()
     query = Q(blackout_id__isnull =False)
     query.add(Q(blackout_id__start_date__lte=today), Q.AND)
-    query.add(Q(blackout_id__end_date__lte=today), Q.AND)
-    data = await BlackoutBuilding.objects().filter(query)\
+    query.add(Q(blackout_id__end_date__gte=today), Q.AND)
+    data =BlackoutBuilding.objects.filter(query)\
         .values('blackout_id__type', 'blackout_id__description', 'building_id__street_id__street_name',
-                'building_id__name', 'building_id__coordinates').all()
+                'building_id__number', 'building_id__coordinates').all()
     return data
