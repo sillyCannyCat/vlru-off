@@ -3,35 +3,20 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: vlru-backend
-    ports:
-      - "8000:8000"
+    container_name: backend
+    env_file:
+      - backend/.env
     volumes:
-      - ./backend/VLOFFDataBase.db:/app/VLOFFDataBase.db
       - ./backend:/app
-    environment:
-      - DEBUG=1
-      - PYTHONUNBUFFERED=1
-    command: uvicorn config.asgi:application --host 0.0.0.0 --port 8000 --reload
-    networks:
-      - vlru-network
+    expose:
+      - "8000"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: vlru-frontend
-    ports:
-      - "3000:80"
-    volumes:
-      - ./frontend:/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+    container_name: frontend
     depends_on:
       - backend
-    networks:
-      - vlru-network
-
-networks:
-  vlru-network:
-    driver: bridge
+    ports:
+      - "80:80"

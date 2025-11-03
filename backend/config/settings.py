@@ -4,10 +4,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key-for-dev')
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "1") == "1"
 
-ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
+CORS_ALLOW_ALL_ORIGINS = os.getenv("CORS_ALLOW_ALL_ORIGINS", "1") == "1"
 
 
 INSTALLED_APPS = [
