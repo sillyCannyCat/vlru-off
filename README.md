@@ -21,6 +21,14 @@ root/
 
 Для удобства можно поднять одновременно backend и frontend через docker-compose из корня репозитория:
 
+- Production (запускается на http://localhost:80/):
+
 ```
-docker-compose up --build
+docker compose -f docker-compose.yml up --build
+```
+
+- Development (запускается на http://localhost:5173/ - frontend и на http://localhost:8000/ - backend):
+
+```
+docker compose -f docker-compose.dev.yml up --build
 ```

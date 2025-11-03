@@ -64,7 +64,7 @@ const outagesStore = useOutagesStore()
           </div>
 
           <Button class="w-full"
-            >Плановые отключени ({{ outagesStore.todayOutages.plannedCount }})</Button
+            >Плановые отключения ({{ outagesStore.todayOutages.plannedCount }})</Button
           >
         </div>
 
