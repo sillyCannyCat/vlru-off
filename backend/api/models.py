@@ -24,10 +24,6 @@ class Blackout(models.Model):
     initiator_id = models.ForeignKey(Initiator, on_delete=models.SET_NULL, null=True)
     source_id = models.ForeignKey(Source, on_delete=models.SET_NULL, null=True)
 
-class Street(models.Model):
-    street_id = models.IntegerField(primary_key=True)
-    street_name = models.CharField(max_length=128)
-
 class District(models.Model):
     district_id = models.IntegerField(primary_key=True)
     district_name = models.CharField(max_length=64)
@@ -43,6 +39,11 @@ class BuildingType(models.Model):
 class City(models.Model):
     city_id = models.IntegerField(primary_key=True)
     city_name = models.CharField(max_length=128)
+
+class Street(models.Model):
+    street_id = models.IntegerField(primary_key=True)
+    street_name = models.CharField(max_length=128)
+    street_city_id = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
 
 class Building(models.Model):
     building_id = ULIDField(primary_key=True)
