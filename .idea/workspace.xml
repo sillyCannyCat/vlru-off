@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1b0104f4-3caa-4fae-ae2a-6cb444859bd7" name="Changes" comment="🥓feat: merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/VLOFFDataBase.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/VLOFFDataBase.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/routers/maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/routers/maps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/faker.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/faker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
