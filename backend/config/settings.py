@@ -4,7 +4,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key-for-dev')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'ninja',
     'corsheaders',
     'api',
+    'background_task'
 ]
 
 MIDDLEWARE = [
