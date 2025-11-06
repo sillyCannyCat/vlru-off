@@ -23,7 +23,7 @@
 
   <Tabs v-model="activeTab" :tabs="tabList" />
   <div v-if="activeTab == 'tab1'">SOSAL</div>
-  <NotificationBanner variant="notifications" />
+  <NotificationBanner gradient="purple" suffixIcon="/icons/telegram-icon.svg" />
 
   <div class="px-[16px] py-[32px] max-w-4xl mx-auto">
     <BarChart :data="complaintData" index="time" class="w-full" />
@@ -41,7 +41,7 @@ const tabList = [
 ]
 
 const complaintData = [
-  // { time: '00:00', cold_water: 2, hot_water: 1, electricity: 1 },
+  { time: '00:00', cold_water: 2, hot_water: 1, electricity: 1 },
   { time: '01:00', cold_water: 1, hot_water: 1, electricity: 1 },
   { time: '02:00', cold_water: 1, hot_water: 0, electricity: 1 },
   { time: '03:00', cold_water: 1, hot_water: 1, electricity: 0 },

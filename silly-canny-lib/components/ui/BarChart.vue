@@ -29,7 +29,7 @@ const categoryHoverColors = {
   electricity: 'var(--color-accent-purple)',
 }
 
-const chartHeight = 200
+const chartHeight = 150
 const marginTop = 16
 const marginBottom = 0
 const marginLeft = 0
