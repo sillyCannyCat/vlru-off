@@ -3,11 +3,11 @@ from django_ulidfield import ULIDField
 
 class Initiator(models.Model):
     initiator_id = models.IntegerField(primary_key=True)
-    initiator_name = models.CharField(max_length=256)
+    initiator_name = models.CharField(max_length=256, unique=True)
 
 class Source(models.Model):
     source_id = models.IntegerField(primary_key=True)
-    source_name = models.CharField(max_length=256)
+    source_name = models.CharField(max_length=256, unique=True)
 
 class Blackout(models.Model):
     TYPE_CHOICES = {
@@ -24,25 +24,31 @@ class Blackout(models.Model):
     initiator_id = models.ForeignKey(Initiator, on_delete=models.SET_NULL, null=True)
     source_id = models.ForeignKey(Source, on_delete=models.SET_NULL, null=True)
 
-class Street(models.Model):
-    street_id = models.IntegerField(primary_key=True)
-    street_name = models.CharField(max_length=128)
-
 class District(models.Model):
     district_id = models.IntegerField(primary_key=True)
-    district_name = models.CharField(max_length=64)
+    district_name = models.CharField(max_length=64, unique=True)
 
 class FolkDistrict(models.Model):
     folk_district_id = models.IntegerField(primary_key=True)
-    folk_district_name = models.CharField(max_length=128)
+    folk_district_name = models.CharField(max_length=128, unique=True)
 
 class BuildingType(models.Model):
     building_type_id = models.IntegerField(primary_key=True)
-    building_type_name = models.CharField(max_length=128)
+    building_type_name = models.CharField(max_length=128, unique=True)
 
 class City(models.Model):
     city_id = models.IntegerField(primary_key=True)
-    city_name = models.CharField(max_length=128)
+    city_name = models.CharField(max_length=128, unique=True)
+
+
+class Street(models.Model):
+    street_id = models.IntegerField(primary_key=True)
+    street_name = models.CharField(max_length=128, null=True)
+    street_city_id = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        unique_together = ('street_name', 'street_city_id')
+
 
 class Building(models.Model):
     building_id = ULIDField(primary_key=True)

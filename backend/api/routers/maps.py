@@ -8,13 +8,10 @@ from api.services.maps import get_address
 router = Router(tags=['maps'])
 
 def coordinate_converter(cords: str):
-    #"[{\"lat\": 43.35137257429448, \"lon\": 132.190376811014}]"
     data = cords.split(', ')
     to_return = list()
-    print(data[0], data[-1])
     to_return.append(float(data[0][9:]))
     to_return.append(float(data[-1][7:-3]))
-    # print(data[0][11:], data[-1][9:-3])
     return to_return
 
 

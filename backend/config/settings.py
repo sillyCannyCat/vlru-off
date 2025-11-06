@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'ninja',
     'corsheaders',
     'api',
+    'background_task'
 ]
 
 MIDDLEWARE = [
